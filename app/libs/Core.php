@@ -21,7 +21,7 @@ class Core
             if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
                 // if exists, set as controller
                 $this->currentController = ucwords($url[0]);
-                // unset 0 index
+                // unset 0 index to allow reading of other values
                 unset($url[0]);
             }
         }
@@ -38,7 +38,7 @@ class Core
             // check if method exists in controller
             if (method_exists($this->currentController, $url[1])) {
                 $this->currentMethod = $url[1];
-                // unset 1 index
+                // unset 1 index to allow reading of other values
                 unset($url[1]);
             }
         }
