@@ -2,10 +2,10 @@
 
 
 // App Root
-define('APPROOT', dirname(dirname(__FILE__)));
+define('APP_ROOT', dirname(dirname(__FILE__)));
 
 // URL Root
-define('URLROOT', 'http://localhost/nerdy_mvc');
+define('URL_ROOT', 'http://localhost/nerdy_mvc');
 
 // Site name
 define('SITE_NAME', 'NerdyMVC');
