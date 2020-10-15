@@ -9,13 +9,13 @@ class Pages extends Controller
 
     public function __construct()
     {
-
+        //
     }
 
     public function index() 
     {
         $data = [
-            'title' => 'welcome'
+            'title' => 'Nerdy MVC',
         ];
         $this->view('pages/index', $data);
     }
@@ -23,7 +23,7 @@ class Pages extends Controller
     public function about() 
     {
         $data = [
-            'title' => 'about'
+            'title' => 'About Us'
         ];
 
         $this->view('pages/about', $data);
