@@ -20,17 +20,22 @@ class PagesController extends BaseController
         $post = Post::all();
         $data = [
             'title' => 'Nerdy MVC',
-            'posts' => $post
+            'posts' => $post,
+            'app_name' => APP_NAME,
+            'app_url' => APP_URL
         ];
-        view('pages/index', $data);
+
+        return $this->render('pages/index', $data);
     }
 
     public function about() 
     {
         $data = [
-            'title' => 'About Us'
+            'title' => 'About Us',
+            'app_name' => APP_NAME,
+            'app_url' => APP_URL
         ];
 
-        view('pages/about', $data);
+        return $this->render('pages/about', $data);
     }
 }

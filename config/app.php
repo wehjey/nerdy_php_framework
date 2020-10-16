@@ -8,7 +8,7 @@
 define('APP_ROOT', dirname(dirname(__FILE__)));
 
 // URL Root
-define('URL_ROOT', '_YOUR_URL_ROOT_');
+define('APP_URL', readEnv('APP_URL'));
 
 // Site name
-define('SITE_NAME', '_YOUR_SITE_NAME_');
+define('APP_NAME', readEnv('APP_NAME'));
