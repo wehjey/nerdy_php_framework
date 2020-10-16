@@ -1,14 +1,16 @@
 <?php
 
+namespace App\Libs;
 /**
  * Base controller class
  * Loads the models and views
  */
-
 class Controller
 {
     /**
      * Load model
+     * @param $model
+     * @return mixed
      */
     public function model($model)
     {
@@ -30,8 +32,9 @@ class Controller
     public function view($view, $data = [])
     {
         // check for view file
-        if (file_exists('../app/views/' . $view . '.php')) {
-            require_once '../app/views/' . $view . '.php';
+        // link from index.php
+        if (file_exists('../views/' . $view . '.php')) {
+            require_once '../views/' . $view . '.php';
         } else {
             die('Whoops! View "' . $view . '" does not exist.');
         }

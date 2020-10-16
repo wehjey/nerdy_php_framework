@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Libs;
+
+use App\Controllers\Pages;
 /**
  * App core class
  * Creates URL and loads core controller
@@ -8,7 +11,7 @@
 
 class Core 
 {
-    protected $currentController = 'Pages';
+    protected $currentController = Pages::class;
     protected $currentMethod = 'index';
     protected $params = [];
 
@@ -20,27 +23,25 @@ class Core
         if (isset($url[0])) {
             if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
                 // if exists, set as controller
-                $this->currentController = ucwords($url[0]);
+                $this->currentController = '\App\Controllers\\' . ucwords($url[0]);
                 // unset 0 index to allow reading of other values
                 unset($url[0]);
             }
         }
 
         // require the controller
-        require_once '../app/controllers/' . $this->currentController . '.php';
+        //require_once '../app/controllers/' . $this->currentController . '.php';
 
         // instantiate the controller class
         // e.g pages = new Pages
         $this->currentController = new $this->currentController;
 
         // check for second part of url which is controller method
-        if (isset($url[1])) {
-            // check if method exists in controller
-            if (method_exists($this->currentController, $url[1])) {
-                $this->currentMethod = $url[1];
-                // unset 1 index to allow reading of other values
-                unset($url[1]);
-            }
+        // check if method exists in controller
+        if (isset($url[1]) && method_exists($this->currentController, $url[1])) {
+            $this->currentMethod = $url[1];
+            // unset 1 index to allow reading of other values
+            unset($url[1]);
         }
 
         // get url params if they exists

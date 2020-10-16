@@ -10,7 +10,9 @@ require_once 'config/database.php';
 
 // Autoload core libraries
 spl_autoload_register(
-    function ($className) {
-        require_once 'libs/'. $className. '.php';
+    static function ($className) {
+        // require_once 'Libs/'. $className. '.php';
+        $parts = explode('\\', $className);
+        require_once 'app/Libs/' . end($parts) . '.php';
     }
 );

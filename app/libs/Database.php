@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Libs;
+
 /**
  * PDO Database class
  * Connect to database
@@ -23,14 +25,14 @@ class Database {
         // Set DSN
         $dsn = 'mysql:host=' .$this->host . ';dbname=' . $this->dbname;
         $options = [
-            PDO::ATTR_PERSISTENT => true,
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            \PDO::ATTR_PERSISTENT => true,
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
         ];
 
         // create PDO instance
         try {
-            $this->dbh = new PDO($dsn, $this->user, $this->password, $options);
-        } catch(PDOException $e) {
+            $this->dbh = new \PDO($dsn, $this->user, $this->password, $options);
+        } catch(\PDOException $e) {
             $this->error = $e->getMessage();
             echo $this->error;
         }
@@ -58,16 +60,16 @@ class Database {
         if (is_null($type)) {
             switch (true) {
                 case is_int($value):
-                    $type = PDO::PARAM_INT;
+                    $type = \PDO::PARAM_INT;
                     break;
                 case is_bool($value):
-                    $type = PDO::PARAM_BOOL;
+                    $type = \PDO::PARAM_BOOL;
                     break;
                 case is_null($value):
-                    $type = PDO::PARAM_NULL;
+                    $type = \PDO::PARAM_NULL;
                     break;
                 default:
-                    $type = PDO::PARAM_STR;
+                    $type = \PDO::PARAM_STR;
             }
         }
 
@@ -88,7 +90,7 @@ class Database {
     public function resultSet() 
     {
         $this->execute();
-        return $this->statement->fetchAll(PDO::FETCH_OBJ);
+        return $this->statement->fetchAll(\PDO::FETCH_OBJ);
     }
 
     /**
@@ -97,7 +99,7 @@ class Database {
     public function single() 
     {
         $this->execute();
-        return $this->statement->fetch(PDO::FETCH_OBJ);
+        return $this->statement->fetch(\PDO::FETCH_OBJ);
     }
 
     /**
