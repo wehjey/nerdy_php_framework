@@ -9,7 +9,7 @@
  * @param $key
  * @return mixed
  */
-function env($key)
+function readEnv($key)
 {
     return $_ENV[$key];
 }

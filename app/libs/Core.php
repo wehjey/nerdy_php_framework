@@ -28,10 +28,6 @@ class Core
                 unset($url[0]);
             }
         }
-
-        // require the controller
-        //require_once '../app/controllers/' . $this->currentController . '.php';
-
         // instantiate the controller class
         // e.g pages = new Pages
         $this->currentController = new $this->currentController;

@@ -11,13 +11,7 @@
         <h4 class="card-title">
             <?php echo $post->title ?>
         </h4>
-        <div class="bg-light p-2 mb-3">
-            written by <?php echo $post->name ?> on <?php echo $post->post_created_at ?>
-        </div>
-        <p class="card-text"><?php echo $post->body ?></p>
-        <a href="<?php echo URL_ROOT ?>/posts/show/<?php echo $post->postId ?>" class="btn btn-dark">more</a>
     </div>
 <?php endforeach ?>
-
 
 <?php require APP_ROOT . '/views/includes/footer.php';

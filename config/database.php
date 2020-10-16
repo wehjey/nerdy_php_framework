@@ -1,10 +1,27 @@
 <?php
 
+use Illuminate\Database\Capsule\Manager as Capsule;
+
 /**
  * Database config file
  */
+$capsule = new Capsule;
 
-define('DB_HOST', env('DB_HOST'));
-define('DB_USER', env('DB_USER'));
-define('DB_PASSWORD', env('DB_PASSWORD'));
-define('DB_NAME', env('DB_NAME'));
+$capsule->addConnection([
+    'driver'    => readEnv('DB_DRIVER'),
+    'host'      => readEnv('DB_HOST'),
+    'database'  => readEnv('DB_NAME'),
+    'username'  => readEnv('DB_USER'),
+    'password'  => readEnv('DB_PASSWORD'),
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+]);
+
+// Set the event dispatcher used by Eloquent models... (optional)
+use Illuminate\Events\Dispatcher;
+use Illuminate\Container\Container;
+$capsule->setEventDispatcher(new Dispatcher(new Container));
+
+// Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
+$capsule->bootEloquent();

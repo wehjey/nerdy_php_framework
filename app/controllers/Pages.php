@@ -10,19 +10,17 @@ use App\Models\Post;
 
 class Pages extends Controller
 {
-
-    private $post;
-
     public function __construct()
     {
-        $this->post = new Post;
+
     }
 
     public function index() 
     {
+        $post = Post::all();
         $data = [
             'title' => 'Nerdy MVC',
-            'posts' => $this->post->getPosts()
+            'posts' => $post
         ];
         $this->view('pages/index', $data);
     }

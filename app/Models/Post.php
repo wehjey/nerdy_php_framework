@@ -3,29 +3,9 @@
 
 namespace App\Models;
 
-use App\Libs\Database;
+use Illuminate\Database\Eloquent\Model;
 
-class Post
+class Post extends Model
 {
-    private $db;
-
-    public function __construct()
-    {
-        $this->db = new Database;
-    }
-
-    public function getPosts()
-    {
-        $this->db->query(
-            'SELECT *,
-            posts.id as postId,
-            users.id as userId,
-            posts.created_at as post_created_at
-            FROM posts
-            INNER JOIN users
-            ON posts.user_id = users.id
-            ORDER BY posts.created_at DESC'
-        );
-        return $this->db->resultSet();
-    }
+    //
 }
