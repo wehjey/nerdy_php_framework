@@ -2,13 +2,13 @@
 
 namespace App\Controllers;
 
-use App\Libs\Controller;
+use App\Libs\BaseController;
 use App\Models\Post;
 /**
  * Default controller for framework
  */
 
-class Pages extends Controller
+class PagesController extends BaseController
 {
     public function __construct()
     {
@@ -22,7 +22,7 @@ class Pages extends Controller
             'title' => 'Nerdy MVC',
             'posts' => $post
         ];
-        $this->view('pages/index', $data);
+        view('pages/index', $data);
     }
 
     public function about() 
@@ -31,6 +31,6 @@ class Pages extends Controller
             'title' => 'About Us'
         ];
 
-        $this->view('pages/about', $data);
+        view('pages/about', $data);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Libs;
 
-use App\Controllers\Pages;
+use App\Controllers\PagesController;
 /**
  * App core class
  * Creates URL and loads core controller
@@ -11,7 +11,7 @@ use App\Controllers\Pages;
 
 class Core 
 {
-    protected $currentController = Pages::class;
+    protected $currentController = PagesController::class;
     protected $currentMethod = 'index';
     protected $params = [];
 
@@ -21,15 +21,15 @@ class Core
 
         // Look in controllers for first value
         if (isset($url[0])) {
-            if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
+            if (file_exists('../app/controllers/' . ucwords($url[0]) . 'Controller'. '.php')) {
                 // if exists, set as controller
-                $this->currentController = '\App\Controllers\\' . ucwords($url[0]);
+                $this->currentController = '\App\Controllers\\' . ucwords($url[0]). 'Controller';
                 // unset 0 index to allow reading of other values
                 unset($url[0]);
             }
         }
         // instantiate the controller class
-        // e.g pages = new Pages
+        // e.g pages = new PagesController
         $this->currentController = new $this->currentController;
 
         // check for second part of url which is controller method

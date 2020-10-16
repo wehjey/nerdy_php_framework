@@ -8,7 +8,7 @@
     "autoload": {
         "files": [
             "app/Helpers/global.php",
-            "app/Libs/Controller.php",
+            "app/Libs/BaseController.php",
             "app/Libs/Core.php"
         ],
         "psr-4": {
