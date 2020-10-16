@@ -10,4 +10,4 @@ require_once '../bootstrap.php';
 /**
  * Initialize Core app library
  */
-$init = new App\Libs\Core;
+//$app = new App\Libs\Core;

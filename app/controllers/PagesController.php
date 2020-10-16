@@ -15,7 +15,7 @@ class PagesController extends BaseController
 
     }
 
-    public function index() 
+    public function index()
     {
         $post = Post::all();
         $data = [
