@@ -31,16 +31,6 @@ switch ($routeInfo[0]) {
         $handler = $routeInfo[1];
         $params = $routeInfo[2];
 
-        list($controller, $method) = $handler;
-
         $container->call($handler, $params);
-
-//        $controller = $container->get($controller);
-//
-//        // call controller method
-//        call_user_func_array([
-//            $controller,
-//            $method
-//        ], $params);
         break;
 }
