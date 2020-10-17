@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Libs\BaseController;
+use Symfony\Component\HttpFoundation\Request;
 use App\Models\Post;
 /**
  * Default controller for framework
@@ -12,11 +13,11 @@ class PagesController extends BaseController
 {
     public function __construct()
     {
-
     }
 
-    public function index()
+    public function index($id, Request $request)
     {
+        //echo $request->get('foo');
         $post = Post::all();
         $data = [
             'title' => 'Nerdy MVC',
