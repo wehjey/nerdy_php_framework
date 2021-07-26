@@ -1,11 +1,13 @@
 <?php
 
+require __DIR__ . '/../vendor/autoload.php';
+
 /**
  * Require needed files
  */
-require_once '../app/bootstrap.php';
+require_once '../bootstrap.php';
 
 /**
  * Initialize Core app library
  */
-$init = new Core;
+//$app = new App\Libs\Core;
